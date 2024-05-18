@@ -47,8 +47,8 @@ CREATE TABLE orders (
   Customer_ID NUMBER NOT NULL, -- Foreign key referencing the customers table (assuming a one-to-many relationship
   FOREIGN KEY (Customer_ID) REFERENCES customers(Customer_ID), -- Enforces relationship
   Order_Date DATE NOT NULL, -- Date the order was placed
-  Order_Received_Date DATE, -- Date the order was received 
   Order_Shipment_Date DATE, -- Date the order was shipped 
+  Order_Received_Date DATE, -- Date the order was received 
   Order_Salesman VARCHAR2(50), -- Name of the salesperson who handled the order 
   Shipment_Charge NUMBER, -- Shipment charge associated with the order 
   Transaction_Status VARCHAR2(20), -- Status of transaction (e.g., complete, cancelled) --Chagned from Transaction_Type
