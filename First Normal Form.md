@@ -1,4 +1,5 @@
-## <u>First Normal Form (1NF)</u>
+## First Normal Form (1NF)
+For a Database to be in First Normal Form:
 - Each set of columns must uniquely identify a row. Does the combination of all columns make a unique row every single time?
 - What field can be used to uniquely identify the row?
   
@@ -10,7 +11,7 @@ If the table can answer these two questions, then it is in 1NF
 No.
 There could be the same combination of data, and it would represent a different row.
 
-We can se here that this table has;
+We can see in [**pg1**](https://github.com/Teekafey/DATABASE-NORMALIZATION/blob/main/DN_files/Cust_orders%201.jpg),[**pg2**](https://github.com/Teekafey/DATABASE-NORMALIZATION/blob/main/DN_files/Cust_orders%202.jpg) that this table has;
 - Customers details (Customer_ID, First Name,	Last Name,	Gender, Email Address, Phone Number, Age, Nationality),
 - Their Address details (Address, City, State, Postal Code, Country),
 - Their order details (Order_ID,	Order Date,	Order Received Date,	Order Shipment Date, Order Salesman, Shipment Charge, Transaction_Type	Purchase Touchpoint,	Purchase status).
@@ -18,7 +19,9 @@ We can se here that this table has;
 
 The table violates 1NF because a single customer can have multiple entries for their orders. This redundancy can lead to data inconsistency and make it difficult to manage customer and order information efficiently.
 
+
 We would separate this table into Customers, Address and Orders table.
+Each set of columns must uniquely identify a row.
 
 [Orders Table](https://github.com/Teekafey/DATABASE-NORMALIZATION/blob/main/DN_files/orders.jpg) (values inserted)
 ```SQL
@@ -55,7 +58,7 @@ CREATE TABLE customers (
 CREATE TABLE address (
   Customer_ID NUMBER PRIMARY KEY, -- Foreign key referencing the customers table (assuming a one-to-one relationship)
   FOREIGN KEY (Customer_ID) REFERENCES customers(Customer_ID), -- Enforces relationship
-  Address VARCHAR2(100) NOT NULL, -- FCustomer's Address
+  Address VARCHAR2(100) NOT NULL, -- Customer's Address
   City VARCHAR2(50) NOT NULL, -- City name
   State VARCHAR2(50) NOT NULL, -- State or province name
   Postal_Code VARCHAR2(20), -- Postal code or ZIP code
