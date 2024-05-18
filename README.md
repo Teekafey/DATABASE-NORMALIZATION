@@ -25,7 +25,7 @@ For this project we would be using Oracle SQL Developer.
 
 ### Okay, now let's get to the good stuff...
 We'll be using a **customer orders table** for this project.
-Here is a snippet of what we are working with; [**pg1**](https://github.com/Teekafey/DATABASE-NORMALIZATION/blob/main/DN_files/Cust_orders%201.jpg),[**pg2**](https://github.com/Teekafey/DATABASE-NORMALIZATION/blob/main/DN_files/Cust_orders%202.jpg)
+Here is a snippet of what we are working with; [**pg1**](https://github.com/Teekafey/DATABASE-NORMALIZATION/blob/main/DN_files/Cust_orders%201.jpg), [**pg2**](https://github.com/Teekafey/DATABASE-NORMALIZATION/blob/main/DN_files/Cust_orders%202.jpg)
 
 
 ## [First Normal Form (1NF)](https://github.com/Teekafey/DATABASE-NORMALIZATION/blob/main/First%20Normal%20Form.md)
