@@ -23,7 +23,7 @@ For this project we would be using Oracle SQL Developer.
 
 #### But for this project we would be going up till the Third Normal Form (3NF). It is the most commonlt used.
 
-### Okay, now let's get to the good stuff..
+### Okay, now let's get to the good stuff...
 We'll be using a **customer orders table** for this project.
 Here is a snippet of what we are working with..[**pg1**](https://github.com/Teekafey/DATABASE-NORMALIZATION/blob/main/DN_files/Cust_orders%201.jpg),[**pg2**](https://github.com/Teekafey/DATABASE-NORMALIZATION/blob/main/DN_files/Cust_orders%202.jpg)
 
