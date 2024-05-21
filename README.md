@@ -30,7 +30,7 @@ Here is a snippet of what we are working with; [**pg1**](https://github.com/Teek
 
 ## [First Normal Form (1NF)](https://github.com/Teekafey/DATABASE-NORMALIZATION/blob/main/First%20Normal%20Form.md)
 
-## Second Normal Form(2NF)
+## [Second Normal Form(2NF)](https://github.com/Teekafey/DATABASE-NORMALIZATION/blob/main/Second%20Normal%20Form.md)
 
 
 
