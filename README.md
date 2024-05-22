@@ -32,6 +32,5 @@ Here is a snippet of what we are working with; [**pg1**](https://github.com/Teek
 
 ## [Second Normal Form(2NF)](https://github.com/Teekafey/DATABASE-NORMALIZATION/blob/main/Second%20Normal%20Form.md)
 
-
-
+## [Third Normal Form(3NF)](https://github.com/Teekafey/DATABASE-NORMALIZATION/blob/main/Third%20Normal%20Form.md)
 
