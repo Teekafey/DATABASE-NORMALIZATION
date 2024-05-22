@@ -36,29 +36,9 @@ So let's go to the second...
 
 > Age: Yes, and this column helps to describe the age of the user.
 
-> Nationality: No, and here's why. The nationality doesn’t describe what a customer is, and isn’t dependent on a customer.
+> Nationality: Yes, it is. (We already get it).
 
-What does that mean for this database?
-
-I would suggest creating a separate table for nationality, and relating them to a customer
-
-The [Nationality](https://github.com/Teekafey/DATABASE-NORMALIZATION/blob/main/DN_files/nationality.jpg) Table (values inserted)
-```SQL
-CREATE TABLE nationality (
-  Nationality_CODE VARCHAR(5) 
-  Nationality VARCHAR2(50) NOT NULL UNIQUE -- Nationality name (unique to prevent duplicates)
-);
-```
-Relating it to the Customers Table
-```SQL
-ALTER TABLE customers
-ADD Nationality_CODE VARCHAR(5) REFERENCES nationality(Nationality_CODE);
-```
-
-The New Customer's Table
-![cust](https://github.com/Teekafey/DATABASE-NORMALIZATION/assets/169501567/b1374f6b-da85-4992-b101-00f6f491a11b)
-
-3. The [Orders](https://github.com/Teekafey/DATABASE-NORMALIZATION/blob/main/DN_files/orders.jpg)
+3. The [Orders](https://github.com/Teekafey/DATABASE-NORMALIZATION/blob/main/DN_files/orders.jpg) Table
 - Are each of these fields dependent on the Order_ID value?
 > Customer_ID - Yes, this tells us whch Customer owns which Order.
   
@@ -68,11 +48,37 @@ The New Customer's Table
 
 > Order_Received_Date -  Yes, this describes the date an order was received.
 
-The rest of the columns do not exactly describe the order_id, why is this:
+The rest of the columns do not exactly describe the Order_id, why is this:
 
-> In the Purchase_Touchpoint column, we can see that users ordered through Phone(app) and Laptop(web appp). The following columns: Order_Salesman, Shipment_Charge, Transaction_Status, Purchase_Touchpoint, Purchase_Freq.
+> In the Orders table, 'Order_Salesman', 'Transaction_Type', 'Purchase_Touchpoint', 'Shipment_Charge' , and 'Purchase_Status' are still present. There could be different Salesmen, Shipment Charge, Touchpoint or Status for different Orders.
 
-We can create a Transaction Details table that will tell us who will process our order/transaction (Order_Salesman), the Shipment_Charge, the Transaction_Status, where a customer ordered from (Purchase_Touchpoint).
+We need to further normalize by separating these into distinct tables.
 
+We can create a Order Salesman and a Transaction Details table that will tell us who will process our order/transaction (Order_Salesman), the Shipment_Charge, the Transaction_Status, where a customer ordered from (Purchase_Touchpoint).
 
+The [Salesman](https://github.com/Teekafey/DATABASE-NORMALIZATION/blob/main/DN_files/SALES.jpg) Table
+```SQL
+CREATE TABLE Order_Salesmen (
+    Order_ID NUMBER,
+    Salesman_ID NUMBER,
+    CONSTRAINT PRIMARY KEY (Order_ID, Salesman_ID),
+    CONSTRAINT FOREIGN KEY (Order_ID) REFERENCES Orders(Order_ID),
+    CONSTRAINT FOREIGN KEY (Salesman_ID) REFERENCES Salesmen(Salesman_ID)
+);
+```
+The [Transactions](https://github.com/Teekafey/DATABASE-NORMALIZATION/blob/main/DN_files/TRANSACT.jpg) Table
+```SQL
+CREATE TABLE Transactions (
+    Transaction_ID NUMBER PRIMARY KEY,
+    Order_ID NUMBER,
+    Transaction_Type VARCHAR2(100),
+    Purchase_Touchpoint VARCHAR2(100),
+    Purchase_Status VARCHAR2(100),
+    Shipment_Charge NUMBER,
+    CONSTRAINT PRIMARY KEY (Order_ID, Transaction_ID),
+    CONSTRAINT FOREIGN KEY (Order_ID) REFERENCES Orders(Order_ID),
+    CONSTRAINT FOREIGN KEY (Transaction_ID) REFERENCES Transactions(Transaction_ID)
+);
+```
+### Our Database is in Second Normal Form
 
