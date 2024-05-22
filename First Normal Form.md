@@ -3,13 +3,16 @@ For a Database to be in First Normal Form:
 - Each set of columns must uniquely identify a row. Does the combination of all columns make a unique row every single time?
 - What field can be used to uniquely identify the row?
   
-If the table can answer these two questions, then it is in 1NF
+If the table can answer these two questions, then it is in 1NF.
+
 
 
 #### But does it?
 
 No.
 There could be the same combination of data, and it would represent a different row.
+
+We need to nemove repeating groups and create separate tables for related data to achieve the First Normal Form (1NF).
 
 We can see in [**pg1**](https://github.com/Teekafey/DATABASE-NORMALIZATION/blob/main/DN_files/Cust_orders%201.jpg),[**pg2**](https://github.com/Teekafey/DATABASE-NORMALIZATION/blob/main/DN_files/Cust_orders%202.jpg) that this table has;
 - Customers details (Customer_ID, First Name,	Last Name,	Gender, Email Address, Phone Number, Age, Nationality),
