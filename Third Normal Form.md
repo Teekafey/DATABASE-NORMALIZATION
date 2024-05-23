@@ -24,6 +24,7 @@ Here are the final database tables;
 - #### [Transaction](https://github.com/Teekafey/DATABASE-NORMALIZATION/blob/main/DN_files/TRANSACT.jpg)
 
 This is what our Database may look like;
+![cust model](https://github.com/Teekafey/DATABASE-NORMALIZATION/assets/169501567/9cba53f8-3c46-413f-9b48-277013fef907)
 
 
 # _THANK YOU!_
