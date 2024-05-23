@@ -58,26 +58,31 @@ We can create a Order Salesman and a Transaction Details table that will tell us
 
 The [Salesman](https://github.com/Teekafey/DATABASE-NORMALIZATION/blob/main/DN_files/SALES.jpg) Table
 ```SQL
-CREATE TABLE Order_Salesmen (
-    Order_ID NUMBER,
-    Salesman_ID NUMBER,
-    CONSTRAINT PRIMARY KEY (Order_ID, Salesman_ID),
-    CONSTRAINT FOREIGN KEY (Order_ID) REFERENCES Orders(Order_ID),
-    CONSTRAINT FOREIGN KEY (Salesman_ID) REFERENCES Salesmen(Salesman_ID)
+CREATE TABLE order_salesmen (
+  Order_ID NUMBER,
+  Salesman_ID NUMBER,
+  CONSTRAINT order_salesmen_pk PRIMARY KEY (Order_ID, Salesman_ID),
+  CONSTRAINT order_salesmen_fk_order FOREIGN KEY (Order_ID) REFERENCES orders(Order_ID),
+  CONSTRAINT order_salesmen_fk_salesman FOREIGN KEY (Salesman_ID) REFERENCES salesmen(Salesman_ID)
 );
+
+CREATE TABLE salesmen (
+  Salesman_ID NUMBER PRIMARY KEY, -- Unique identifier for each salesman
+  Salesman_Name VARCHAR2(100) NOT NULL -- Salesman's name
+);
+
 ```
 The [Transactions](https://github.com/Teekafey/DATABASE-NORMALIZATION/blob/main/DN_files/TRANSACT.jpg) Table
 ```SQL
-CREATE TABLE Transactions (
-    Transaction_ID NUMBER PRIMARY KEY,
-    Order_ID NUMBER,
-    Transaction_Type VARCHAR2(100),
-    Purchase_Touchpoint VARCHAR2(100),
-    Purchase_Status VARCHAR2(100),
-    Shipment_Charge NUMBER,
-    CONSTRAINT PRIMARY KEY (Order_ID, Transaction_ID),
-    CONSTRAINT FOREIGN KEY (Order_ID) REFERENCES Orders(Order_ID),
-    CONSTRAINT FOREIGN KEY (Transaction_ID) REFERENCES Transactions(Transaction_ID)
+CREATE TABLE transactions (
+  Transaction_ID NUMBER PRIMARY KEY, -- Unique identifier for each transaction
+  Order_ID NUMBER NOT NULL, -- Foreign key referencing the orders table
+  Transaction_Type VARCHAR2(100), -- Type of transaction (e.g., Credit Card, PayPal)
+  Purchase_Touchpoint VARCHAR2(100), -- Point of purchase (e.g., Web, Phone)
+  Purchase_Status VARCHAR2(100), -- Status of purchase (e.g., Completed, Pending)
+  Shipment_Charge NUMBER, -- Charge for shipping the order
+  FOREIGN KEY (Order_ID) REFERENCES orders(Order_ID), -- Enforces relationship
+  CONSTRAINT unique_order_transaction UNIQUE (Order_ID, Transaction_ID) -- Ensures unique combination
 );
 ```
 ### Our Database is in Second Normal Form
