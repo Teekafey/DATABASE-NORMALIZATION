@@ -1,4 +1,5 @@
 ![DATABASENORMALIZATION-ezgif com-video-to-gif-converter](https://github.com/Teekafey/DATABASE-NORMALIZATION/assets/169501567/3b6e2b91-c331-4ada-bc12-cdd2f1a0d4cb)
+
 ## What Is Database Normalization?
 Simply, database normalisation is a process used for data modelling or database creation, where you organise your data and tables so it can be added and updated efficiently.
 
